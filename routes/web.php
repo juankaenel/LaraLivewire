@@ -1,5 +1,6 @@
 <?php
 
+use App\Comment;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
+//$comments = Comment::all();
+//return view('welcome', compact('comments'));
     return view('welcome');
 });
