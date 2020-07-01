@@ -6,7 +6,7 @@
         <span class="text-red-500 text-xs">{{$message}}</span>
         @enderror
 
-        <!--Imprimos un mensaje de confirmación-->
+    <!--Imprimos un mensaje de confirmación-->
         @if (session()->has('message'))
             <div class="p-3 bg-green-300 text-green-800 rounded shadow-sm">
                 {{session('message')}}
@@ -32,12 +32,15 @@
                             <p class="font-bold text-lg">{{$comment->creator->name}}</p>
                             <p class="mx-3 py-1 text-xs text-gray-400 font-semibold">{{$comment->created_at->diffForHumans()}}</p>
                         </div>
-                        <i class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer" wire:click="removeComment({{$comment->id}})"></i>
+                        <i class="fas fa-times text-red-200 hover:text-red-600 cursor-pointer"
+                           wire:click="removeComment({{$comment->id}})"></i>
                     </div>
-                        <p class="text-gray-800">{{$comment->body}} </p>
+                    <p class="text-gray-800">{{$comment->body}} </p>
                 </div>
             @endforeach
-        {{$comments->links()}}
+        <!--hago uso de la paginacion y le paso la pagina que controla el diseño de la paginacion-->
+            {{ $comments->links('pagination-links') }}
+
         </div>
     </div>
 
