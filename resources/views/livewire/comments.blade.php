@@ -1,4 +1,4 @@
-<div class="flex justify-center">
+
     <div class="w-6/12">
         <h1 class="my-12 text-3x2 font-bold">Comments</h1>
         <!--Capturamos los errores-->
@@ -13,6 +13,18 @@
             </div>
 
         @endif
+
+        <!--seccion de imagén-->
+
+        <section>
+            @if ($image)
+            <img src="{{$image}}" width="200" alt="">
+            @endif
+            <input type="file" id="image" wire:change="$emit('fileChoosen')">
+        </section>
+
+
+        <!--end imagen-->
 
 
         <form type="submit" wire:submit.prevent="addComment" class="my-4 flex">
@@ -36,6 +48,10 @@
                            wire:click="removeComment({{$comment->id}})"></i>
                     </div>
                     <p class="text-gray-800">{{$comment->body}} </p>
+                    <!--si existe la imagen en la bd mostramela-->
+                    @if ($comment->image)
+                        <img src="{{$comment->imagePath}}" alt="" width="100">
+                    @endif
                 </div>
             @endforeach
         <!--hago uso de la paginacion y le paso la pagina que controla el diseño de la paginacion-->
@@ -44,4 +60,20 @@
         </div>
     </div>
 
-</div>
+
+<script>
+
+    //ponemos a la escucha el metodo fileChoosen cuando se guarda una img
+    window.livewire.on('fileChoosen', () =>{
+        let inputField = document.getElementById('image')
+        let file = inputField.files[0];
+        let reader = new FileReader();
+
+        reader.onloadend = () =>{
+            window.livewire.emit('fileUploaded', reader.result) //emitimos el evento
+        }
+        reader.readAsDataURL(file);
+
+    })
+
+</script>
