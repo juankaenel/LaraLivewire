@@ -1,4 +1,4 @@
-
+<div>
     <div class="w-6/12">
         <h1 class="my-12 text-3x2 font-bold">Comments</h1>
         <!--Capturamos los errores-->
@@ -59,7 +59,7 @@
 
         </div>
     </div>
-
+</div>
 
 <script>
 
@@ -77,3 +77,4 @@
     })
 
 </script>
+
