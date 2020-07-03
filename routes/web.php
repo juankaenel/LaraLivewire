@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 
-Route::livewire('/','home');
+//ruta , componente, nombre
+Route::livewire('/','home')->name('home');
 Route::livewire('/login','login')->name('login');
+Route::livewire('/logout','logout')->name('logout');
 Route::livewire('/register','register');
