@@ -17,12 +17,16 @@
 
 
 <body class="flex flex-wrap justify-center">
-<div class="flex w-full justify-left px-4 bg-purple-900 text-white">
+<div class="flex w-full justify-between px-4 bg-red-700 text-white">
     <a class="mx-3 py-4" href="/">Home</a>
-    <a class="mx-3 py-4" href="/login">Login</a>
+    <div class="py-4">
+        <a class="mx-3" href="/login">Login</a>
+        <a class="mx-3" href="/register">Register</a>
+    </div>
+
 </div>
 
-<div class="my-10 flex justify-center" >
+<div class="my-10 flex w-full justify-center" >
     @yield('content')
 </div>
 
